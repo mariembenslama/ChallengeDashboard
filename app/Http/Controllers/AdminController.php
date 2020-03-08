@@ -11,11 +11,11 @@ class AdminController extends OrganizerController
 {
 
     public function fetchGuests() {
-        $guests = Guest::orderBy('createdAt', 'desc')->paginate(10);
+        $guests = Guest::orderBy('created_at', 'desc')->paginate(10);
         return view('pages.Admin.listGuests')->with('guests', $guests);
     }
     public function fetchOrganizers() {
-        $organizers = Organizer::orderBy('createdAt', 'desc')->paginate(10);
+        $organizers = Organizer::orderBy('created_at', 'desc')->paginate(10);
         return view('pages.Admin.listOrganizers')->with('organizers', $organizers);
     }
 
@@ -27,7 +27,7 @@ class AdminController extends OrganizerController
     public function showOrganizer($idOrganizer) {
         $organizer = Organizer::find($idOrganizer);
         $organizerChallenges = Challenge::where('idOrganizer', $idOrganizer)
-                            ->orderBy('createdAt', 'desc')
+                            ->orderBy('created_at', 'desc')
                             ->paginate(10);
         return view('pages.Admin.organizerDetails', compact('organizer', 'organizerChallenges')); 
     }

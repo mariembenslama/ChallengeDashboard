@@ -19,9 +19,9 @@ class CreateOrganizersTable extends Migration
             $table->string('nameOrganizer');
             $table->string('emailOrganizer');
             $table->string('passwordOrganizer');    
-            $table->timestamp('createdAt');
-            $table->timestamp('updatedAt');
-            $table->timestamp('deletedAt');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+            $table->timestamp('deleted_at');
 
         });
     }

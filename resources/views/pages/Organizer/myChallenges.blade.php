@@ -14,7 +14,7 @@
                     <span>Deadline: {{$challenge->deadlineChallenge}}</span><br>
                     <span>Status: {{$challenge->statusChallenge}}</span><br>
 
-                    <a type="button" href="editchallenge/{{$challenge->idChallenge}}" class="btn btn-success btn-lg">Edit</a> 
+                    <a type="button" href="{{$challenge->idChallenge}}/edit" class="btn btn-success btn-lg">Edit</a> 
                     <a type="button" class="btn btn-danger btn-lg">Delete</a>
                 </li><br>
                 <br>

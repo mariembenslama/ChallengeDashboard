@@ -20,9 +20,9 @@ class CreateChallengesTable extends Migration
             $table->string('descriptionChallenge');
             $table->date('deadlineChallenge');       
             $table->boolean('statusChallenge');  
-            $table->timestamp('createdAt');
-            $table->timestamp('updatedAt');
-            $table->timestamp('deletedAt');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+            $table->timestamp('deleted_at');
             $table->integer('idOrganizer');
             $table->foreign('idOrganizer')->references('idOrganizer')->on('organizers');
         });

@@ -19,9 +19,9 @@ class CreateAdminsTable extends Migration
             $table->string('nameAdmin');
             $table->string('emailAdmin');
             $table->string('passwordAdmin');  
-            $table->timestamp('createdAt');
-            $table->timestamp('updatedAt');
-            $table->timestamp('deletedAt');      
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+            $table->timestamp('deleted_at');      
         });
     }
 

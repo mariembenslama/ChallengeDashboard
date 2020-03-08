@@ -4,7 +4,7 @@
 
     <h1>Challenge: {{$challenge->titleChallenge}}</h1>
     <h2 style="color:red">Deadline: {{$challenge->deadlineChallenge}}</h2><br>
-    <h3>Created At: {{$challenge->createdAt}}</h3><br>
+    <h3>Created At: {{$challenge->created_at}}</h3><br>
     @if($challenge->modifiedAt!=null)
         <h3>[Edited] {{$challenge->modifiedAt}}</h3><br>
     @endif

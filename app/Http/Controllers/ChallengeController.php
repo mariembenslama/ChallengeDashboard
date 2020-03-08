@@ -9,7 +9,7 @@ use App\Comment;
 class ChallengeController extends Controller
 {
     public function index() {
-        $challenges = Challenge::orderBy('createdAt', 'desc')->paginate(10);
+        $challenges = Challenge::orderBy('created_at', 'desc')->paginate(10);
         return view('pages.Challenge.challenges')->with('challenges', $challenges);
     }
 

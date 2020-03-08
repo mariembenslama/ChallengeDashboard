@@ -49,4 +49,10 @@ class OrganizerController extends Controller
         $challenge = Challenge::find($idChallenge);
         return view('pages.Organizer.editChallenge')->with('challenge', $challenge);
     }
+
+    public function destroy($idChallenge) {
+        $challenge = Challenge::find($idChallenge);
+        $challenge->delete();
+        return redirect('organizerchallenges/')->with('success', 'Challenge deleted');
+    }
 }

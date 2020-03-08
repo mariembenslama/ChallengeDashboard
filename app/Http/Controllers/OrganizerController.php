@@ -27,4 +27,7 @@ class OrganizerController extends Controller
         return view('pages.Organizer.createChallenge');
     }
 
+    public function edit($idChallenge) {
+        return view('pages.Organizer.editChallenge')->with('idChallenge', $idChallenge);
+    }
 }

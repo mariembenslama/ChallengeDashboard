@@ -1,4 +1,4 @@
-@extends('.layouts.inc.navbarOrganizer')
+@extends('.layouts.app')
 
 @section('content')
     <p>edit challenges</p>

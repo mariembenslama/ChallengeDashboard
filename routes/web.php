@@ -36,6 +36,7 @@ Route::get('/listorganizers', 'AdminController@fetchOrganizers');
 Route::get('/listorganizers/{idOrganizer}', 'AdminController@showOrganizer');
 Route::resource('/mychallenges', 'GuestController');
 Route::resource('/organizerchallenges', 'OrganizerController');
+Route::get('editchallenge/{idChallenge}', 'OrganizerController@edit');
 Route::get('/createchallenge', 'OrganizerController@store');
 
 

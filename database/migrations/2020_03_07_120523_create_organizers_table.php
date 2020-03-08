@@ -17,7 +17,7 @@ class CreateOrganizersTable extends Migration
             $table->increments('idOrganizer');
             
             $table->string('nameOrganizer');
-            $table->string('emailOrganizer');
+            $table->string('emailOrganizer')->unique();
             $table->string('passwordOrganizer');    
             $table->timestamp('created_at');
             $table->timestamp('updated_at');

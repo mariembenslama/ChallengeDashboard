@@ -22,11 +22,11 @@ Route::get('/about', function () {
 });
 
 Route::get('/register', function () {
-    return view('pages.General.register');
+    return view('auth.register');
 });
 
 Route::get('/login', function () {
-    return view('pages.General.login');
+    return view('auth.login');
 });
 
 Route::resource('/challenges', 'ChallengeController');
@@ -45,3 +45,11 @@ Route::get('/challenges/search', function () {
     return "this is challenge search page";
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

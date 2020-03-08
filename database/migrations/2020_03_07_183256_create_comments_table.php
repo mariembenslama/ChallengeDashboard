@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->increments('idComment');
 
             $table->string('nameNonGuest');
-            $table->string('emailNonGuest');
+            $table->string('emailNonGuest')->unique();
             $table->string('comment');
 
             $table->timestamp('created_at');

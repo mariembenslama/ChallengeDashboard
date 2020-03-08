@@ -17,7 +17,7 @@ class CreateGuestsTable extends Migration
             $table->increments('idGuest');
 
             $table->string('nameGuest');
-            $table->string('emailGuest');
+            $table->string('emailGuest')->unique();
             $table->string('passwordGuest');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');

@@ -50,4 +50,10 @@ class ChallengeController extends Controller
         return redirect('/challenges')->with('success', 'Comment added succefully!');
     }
 
+    public function saveUser(Request $request) {
+        return 'saved';
+    }
+    public function loginUser(Request $request) {
+        return 'login success';
+    }
 }

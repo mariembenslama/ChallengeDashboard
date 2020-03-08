@@ -1,6 +1,6 @@
 @extends('.layouts.app')
-
 @section('content')
+@extends('.layouts.inc.messages')
 
     @if(count($organizerChallenges) > 0)
         <ul class="list-group">

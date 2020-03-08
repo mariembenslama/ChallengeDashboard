@@ -25,6 +25,8 @@
             <ul class="nav navbar-nav">
               <li><a href="/about">About</a></li>
               <li><a href="/challenges">Challenges</a></li>
+              <li style="float:right"><a href="/login">Login</a></li>
+              <li style="float:right"><a href="/register">Register</a></li>
             </ul>
 
         </div>

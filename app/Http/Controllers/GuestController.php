@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Guest;
 
-class GuestController extends NonGuestController
+class GuestController extends Controller
 {
-    public function SubmitCodeByIdChallenge() {
-        return "Submit code by Id challenge";
+    public function index() {
+        $guests = Guest::orderBy('createdAt', 'desc')->paginate(10);
+        return view('pages.Admin.listGuests')->with('guests', $guests);
     }
-    public function DeleteCodeByIdChallenge() {
-        return "Delete code by Id challenge";
+
+    public function show($idGuest) {
+        $guest = Guest::find($idGuest);
+        return view('pages.Admin.guestDetails')->with('guest', $guest);
     }
-    public function ModifyCodeByIdChallenge() {
-        return "Modify code by id challenge";
-    }
-    public function GetCodeByIdChallenge() {
-        return "Get code by id challenge";
+
+    public function store(Request $request) {
+        
     }
 
 

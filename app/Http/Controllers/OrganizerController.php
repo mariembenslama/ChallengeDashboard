@@ -3,41 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Organizer;
+use App\Challenge;
+use DB;
 
 class OrganizerController extends Controller
 {
-       /***** Challenges *****/
 
-    public function ListOfChallenges() {
-        $data = array(
-            'challenges' => ['Challenge1', 'Challenge2', 'Challenge3']
-        );
-        return view('pages.challenges') -> with($data);
+    public function index() {
+        $organizers = Organizer::orderBy('createdAt', 'desc')->paginate(10);
+        return view('pages.Admin.listOrganizers')->with('organizers', $organizers);
     }
 
-    public function SearchChallenge() {
-        return "Filter of challenges";
-    }
-    public function getChallengeById() {
-        return "List of challenges";
-    }
-    public function DeleteChallenge() {
-        return "Delete challenge";
+    public function show($idOrganizer) {
+        $organizer = Organizer::find($idOrganizer);
+        $organizerChallenges = Challenge::where('idOrganizer', $idOrganizer)
+                               ->orderBy('createdAt', 'desc')
+                               ->paginate(10);
+                            
+        return view('pages.Admin.organizerDetails', compact('organizer', 'organizerChallenges'));
     }
 
-    /***** Guests *****/
+    public function store(Request $request) {
 
-    public function ListOfGuests() {
-            return "List of guests";
-    }
-    public function SearchGuest() {
-        return "Search guest";
-    }
-    public function DeleteGuest() {
-        return "Delete guest";
-    }
-    public function GetGuestById() {
-        return "Guest by Id";
     }
 
 }

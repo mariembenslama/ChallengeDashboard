@@ -9,7 +9,7 @@ class AdminController extends OrganizerController
 
     /***** Organizers *****/
 
-    public function ListOfOrganizers() {
+    public function index() {
         return "List of organizers";
     }
     public function SearchOrganizers() {

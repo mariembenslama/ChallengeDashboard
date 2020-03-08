@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Challenge;
 use App\Comment;
-use App\NonGuest;
 
 class ChallengeController extends Controller
 {
@@ -17,13 +16,18 @@ class ChallengeController extends Controller
     public function show($idChallenge) {
         $data = [
             $challenge = Challenge::find($idChallenge),
-            $nonGuests = NonGuest::all()
+            $comments = Comment::where('idChallenge', $idChallenge)
+                        ->get()
+                        ->sortByDesc('created_at')
         ];
-        return view('pages.Challenge.challengeDetails', compact(['challenge', 'nonGuests']));
+        return view('pages.Challenge.challengeDetails', compact(['challenge', 'comments']));
     }
 
+ 
+
     public function store(Request $request){
-        $idChallenge = $request->idChallenge;
+        $challenge = new Challenge();
+        $challenge->idChallenge = $request->idChallenge;
         $this->validate($request ,[
             'name' => 'required',
             'email' => 'required',
@@ -32,22 +36,18 @@ class ChallengeController extends Controller
 
         // Create a comment
         $comment = new Comment();
-        $nonGuest = new NonGuest();
 
-        $nonGuest->nameNonGuest = $request->input('name');
-        $nonGuest->emailNonGuest = $request->input('email');
+        $comment->nameNonGuest = $request->input('name');
+        $comment->emailNonGuest = $request->input('email');
+        $comment->comment = $request->input('comment');
+        $comment->idChallenge = $challenge->idChallenge;
+        // $challenge = Challenge::find(1);
+        // $comment->challenge()->attach($challenge);
 
-        // Save non guest
-        $idNonGuest = $nonGuest->save();
+        // Save a comment
+        $comment->save();
 
-        // // Save comment
-        // $comment->idNonGuest = $idNonGuest;
-        // $comment->idChallenge = $idChallenge;
-        // $comment->comment = $request->input('comment');
-        // //  save a commen
-        // $comment->save();
-
-         return redirect('/challenges')->with('success', 'Comment added succefully!');
+        return redirect('/challenges')->with('success', 'Comment added succefully!');
     }
 
 }

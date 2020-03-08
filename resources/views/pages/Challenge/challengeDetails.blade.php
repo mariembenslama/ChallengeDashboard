@@ -11,13 +11,13 @@
     <h4>{{$challenge->descriptionChallenge}}</h4>
     <br>
     <h3> Comments section: </h3>
-               @if(count($nonGuests) > 0)
-                    @foreach($nonGuests as $comment)
-                        {!!$comment->nameNonGuest!!}
-                        <br>
-                        {!!$comment->comment!!}
-                    @endforeach
-               @endif   
+        @if(count($comments) > 0)
+            @foreach($comments as $comment)
+                {!!$comment->nameNonGuest!!}
+                <br>
+                {!!$comment->comment!!}
+            @endforeach
+        @endif   
     <br>
     {!! Form::open(['action' => 'ChallengeController@store', 'method' => 'POST']) !!}
         <span style="visibility: hidden">{{Form::text('idChallenge', $challenge)}}</span>

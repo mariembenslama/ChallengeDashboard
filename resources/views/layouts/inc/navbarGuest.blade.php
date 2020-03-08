@@ -25,7 +25,7 @@
             <ul class="nav navbar-nav">
               <li><a href="/about">About</a></li>
               <li><a href="/challenges">Challenges</a></li>
-              <li><a href="/myChallenges">My challenges</a></li>
+              <li><a href="/mychallenges">My challenges</a></li>
             </ul>
 
         </div>

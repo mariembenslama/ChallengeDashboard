@@ -30,8 +30,13 @@ Route::get('/login', function () {
 });
 
 Route::resource('/challenges', 'ChallengeController');
-Route::resource('/listguests', 'GuestController');
-Route::resource('/listorganizers', 'OrganizerController');
+Route::resource('/listguests', 'AdminController');
+Route::resource('/listorganizers', 'AdminController');
+Route::resource('/mychallenges', 'GuestController');
+Route::resource('/organizerchallenges', 'OrganizerController');
+Route::get('/createchallenge', 'OrganizerController@store');
+
+
 
 Route::get('/challenges/search', function () {
     return "this is challenge search page";

@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Guest;
+use App\Participant;
 
 class GuestController extends Controller
 {
     public function index() {
-        $guests = Guest::orderBy('createdAt', 'desc')->paginate(10);
-        return view('pages.Admin.listGuests')->with('guests', $guests);
+        $guestChallenges = Participant::where('idGuest', 1)
+                            ->orderBy('submittedAt', 'desc')
+                            ->paginate(10);
+        return view('pages.Guest.myChallenges')->with('guestChallenges', $guestChallenges);
     }
 
     public function show($idGuest) {
-        $guest = Guest::find($idGuest);
-        return view('pages.Admin.guestDetails')->with('guest', $guest);
+        
     }
 
     public function store(Request $request) {

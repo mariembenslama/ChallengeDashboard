@@ -11,21 +11,20 @@ class OrganizerController extends Controller
 {
 
     public function index() {
-        $organizers = Organizer::orderBy('createdAt', 'desc')->paginate(10);
-        return view('pages.Admin.listOrganizers')->with('organizers', $organizers);
+
+        $organizerChallenges = Challenge::where('idOrganizer', 1)     
+                            ->orderBy('createdAt', 'desc')
+                            ->paginate(10);
+        return view('pages.Organizer.myChallenges')->with('organizerChallenges', $organizerChallenges);
     }
 
-    public function show($idOrganizer) {
-        $organizer = Organizer::find($idOrganizer);
-        $organizerChallenges = Challenge::where('idOrganizer', $idOrganizer)
-                               ->orderBy('createdAt', 'desc')
-                               ->paginate(10);
-                            
-        return view('pages.Admin.organizerDetails', compact('organizer', 'organizerChallenges'));
+    public function show($idChallenge) {
+       
+        return view('pages.Challenge.challengeDetails')->with('idChallenge', $idChallenge);
     }
 
     public function store(Request $request) {
-
+        return view('pages.Organizer.createChallenge');
     }
 
 }

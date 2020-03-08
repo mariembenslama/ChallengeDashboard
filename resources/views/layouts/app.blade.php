@@ -12,7 +12,7 @@
 
     </head>
     <body>
-        @include('layouts.inc.navbarOrganizer')
+        @include('layouts.inc.navbarOrganizer') 
         <div class="container">
             @yield('content')
         </div>

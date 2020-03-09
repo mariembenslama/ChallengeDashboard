@@ -50,9 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nameGuest' => ['required', 'string', 'max:255'],
-            'emailGuest' => ['required', 'string', 'email', 'max:255', 'unique:guests'],
-            'passwordGuest' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:guests'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -64,13 +64,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $guest = Guest::create([
-            'nameGuest' => $data['nameGuest'],
-            'emailGuest' => $data['emailGuest'],
-            'passwordGuest' => Hash::make($data['passwordGuest']),
+        return Guest::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
         ]);
-            $guest->save();
-
-            return redirect('/')->with('success', 'Registered succefully!');
-        }
+    }
 }

@@ -1,5 +1,4 @@
-@extends('.layouts.app')
-
+@extends('layouts.app')
 @section('content')
     <div class="jumbotron text-center">
         <h1>Welcome To Tech Challenge!</h1>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
+@extends('layouts.inc.navbarAdmin')
 @section('content')
-
     <h1>Guest's name      : {{$guest->nameGuest}}</h1>
     <h2>Identifier        : {{$guest->idGuest}}</h2>
     <h2>Email             : {{$guest->emailGuest}}</h2>

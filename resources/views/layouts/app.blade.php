@@ -12,8 +12,9 @@
 
     </head>
     <body>
-        @include('layouts.inc.navbar') 
+        @include('layouts.inc.navbar')
         <div class="container">
+        <br><br><br>
             @yield('content')
         </div>
     </body>

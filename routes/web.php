@@ -21,9 +21,7 @@ Route::get('/about', function () {
     return view('pages.General.about');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
+Route::resource('/register', 'RegisterController');
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -45,6 +43,14 @@ Route::get('/challenges/search', function () {
     return "this is challenge search page";
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

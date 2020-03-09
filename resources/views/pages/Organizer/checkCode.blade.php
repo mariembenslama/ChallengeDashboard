@@ -1,4 +1,4 @@
 @extends('.layouts.app')
 @section('content')
-    <p>check challenges codes</p>
+    <p>check challenges code</p>
 @endsection

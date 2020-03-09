@@ -8,7 +8,6 @@ class Guest extends Model
 {
     protected $table = 'guests';
     public $primaryKey = 'idGuest';
-    public $string = ['nameGuest', 'emailGuest'];
+    public $string = ['nameGuest', 'emailGuest', 'passwordGuest'];
     public $timestamp =['created_at', 'updated_at'];
-
 }

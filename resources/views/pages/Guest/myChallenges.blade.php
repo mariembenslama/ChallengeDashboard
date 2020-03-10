@@ -12,11 +12,12 @@
                         <a href="/challenges/{{$challenge->challenge_id}}">
                             {{$challenge->title}}
                         </a>
-                        {{$challenge->description}}
+                    <br>
+                    <span>Description       : {{$challenge->description}}</span>
                     </span><br>
                     <span>My code           : {{$challenge->code}}</span><br>
                     <span>Date of submission: {{$challenge->submitted_at}}</span><br>
-                    <span>Organizer: {{$challenge->organizer_id}}</span><br>
+                    <span>Organizer         : {{$challenge->name}}</span><br>
                 </li><br>
             @endforeach
         </ul>

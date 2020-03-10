@@ -12,14 +12,13 @@ class OrganizerController extends Controller
 
     public function index() {
 
-        $organizerChallenges = Challenge::where('idO', Auth::user()->id)     
+        $organizerChallenges = Challenge::where('organizer_id', Auth::user()->id)     
                             ->orderBy('created_at', 'desc')
                             ->paginate(10);
         return view('pages.Organizer.myChallenges')->with('organizerChallenges', $organizerChallenges);
     }
 
     public function show($id) {
-       
         return view('pages.Challenge.challengeDetails')->with('id', $id);
     }
 

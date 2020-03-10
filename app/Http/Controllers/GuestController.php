@@ -14,10 +14,10 @@ class GuestController extends Controller
     public function index() {
 
         $idG = Auth::user()->id;
-        $participant = new Participant();
         $sql = "select c.title, c.description, c.deadline, c.status, c.created_at,
                 c.updated_at, c.deleted_at, p.code, c.organizer_id, p.submitted_at, 
-                p.challenge_id from participants p, challenges c where p.guest_id = $idG and p.challenge_id = c.id";
+                p.challenge_id, o.name from participants p, challenges c, organizers o
+                where p.guest_id = $idG and p.challenge_id = c.id and o.id = c.organizer_id";
 
         $guestChallenges = DB::select($sql);
         return view('pages.Guest.myChallenges')->with('guestChallenges', $guestChallenges);

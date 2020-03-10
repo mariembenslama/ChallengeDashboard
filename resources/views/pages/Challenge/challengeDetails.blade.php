@@ -3,21 +3,24 @@
 @include('layouts.inc.messages')
 
     <h1>Challenge: {{$challenge->titleChallenge}}</h1>
-    <h2 style="color:red">Deadline: {{$challenge->deadlineChallenge}}</h2><br>
+    <h2 style="color:red">Deadline: {{$challenge->deadline}}</h2><br>
     <h3>Created At: {{$challenge->created_at}}</h3><br>
     @if($challenge->modifiedAt!=null)
-        <h3>[Edited] {{$challenge->modifiedAt}}</h3><br>
+        <h3>[Edited] {{$challenge->modified_at}}</h3><br>
     @endif
-    <h4>{{$challenge->descriptionChallenge}}</h4>
+    <h4>{{$challenge->description}}</h4>
+    @foreach($organizer as $o)
+        <h4>Organizer name: {{$o->name}}</h4>
+    @endforeach
     <br>
     <h3> Comments section: </h3>
-        @if(count($comments) > 0)
+        {{-- @if(count($comments) > 0)
             @foreach($comments as $comment)
                 {!!$comment->nameNonGuest!!}
                 <br>
                 {!!$comment->comment!!}
             @endforeach
-        @endif   
+        @endif    --}}
     <br>
     {!! Form::open(['action' => 'ChallengeController@store', 'method' => 'POST']) !!}
         <span style="visibility: hidden">{{Form::text('idChallenge', $challenge)}}</span>

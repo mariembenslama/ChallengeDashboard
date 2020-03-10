@@ -9,16 +9,16 @@
                     {{-- Get All My challenges --}}
                     <p>My challenges</p>
                     <span> Challenge: 
-                        <a href="/challenges/{{$challenge->idC}}">
-                        {{$challenge->title}}
+                        <a href="/challenges/{{$challenge->challenge_id}}">
+                            {{$challenge->title}}
                         </a>
+                        {{$challenge->description}}
                     </span><br>
-                    <span>My code           : {{$challenge->codeParticipant}}</span><br>
-                    <span>Date of submission: {{$challenge->submittedAt}}</span><br>
-                    <span>Organizer: {{$challenge->id}}</span><br>
+                    <span>My code           : {{$challenge->code}}</span><br>
+                    <span>Date of submission: {{$challenge->submitted_at}}</span><br>
+                    <span>Organizer: {{$challenge->organizer_id}}</span><br>
                 </li><br>
             @endforeach
-            {{$guestChallenges->links()}}
         </ul>
     @else 
         <p> You didn't participate in any challenge! </p>

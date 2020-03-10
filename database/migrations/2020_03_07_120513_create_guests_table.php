@@ -22,7 +22,8 @@ class CreateGuestsTable extends Migration
             $table->string('remember_token')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable(); 
+            $table->timestamp('deleted_at')->nullable();
+            
         });
     }
 

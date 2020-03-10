@@ -23,8 +23,12 @@ class CreateChallengesTable extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->integer('idO');
+
+            $table->integer('organizer_id');
             // $table->foreign('idO')->references('id')->on('organizers');
+
+            $table->integer('comment_id')->nullable();
+            // $table->foreign('idm')->references('id')->on('organizers');
         });
     }
 

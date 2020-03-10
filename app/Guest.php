@@ -18,7 +18,7 @@ class Guest extends Eloquent implements Authenticatable
     public $timestamps = ['created_at', 'updated_at', 'deleted_at'];
 
     public function participant() {
-        return $this->belongsTo('App\Participant');
+        return $this->hasMany('App\Participant');
     }
 }
 

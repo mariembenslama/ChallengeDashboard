@@ -13,4 +13,11 @@ class Challenge extends Model
     public $boolean = 'status';
     public $timestamp = ['created_at', 'updated_at', 'deleted_at'];
     public $integer = 'idO';
+    // public function participant() {
+    //     return $this->belongsTo('App\Participant');
+    // }
+    // public function organizer() {
+    //     return $this->belongsTo('App\Organizer');
+    // }
+
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Challenge;
 use App\Comment;
-
+use Auth;
 class ChallengeController extends Controller
 {
     public function index() {
@@ -13,10 +13,10 @@ class ChallengeController extends Controller
         return view('pages.Challenge.challenges')->with('challenges', $challenges);
     }
 
-    public function show($idChallenge) {
+    public function show($id) {
         $data = [
-            $challenge = Challenge::find($idChallenge),
-            $comments = Comment::where('idChallenge', $idChallenge)
+            $challenge = Challenge::find($id),
+            $comments = Comment::where('id', $id)
                         ->get()
                         ->sortByDesc('created_at')
         ];
@@ -27,33 +27,19 @@ class ChallengeController extends Controller
 
     public function store(Request $request){
         $challenge = new Challenge();
-        $challenge->idChallenge = $request->idChallenge;
         $this->validate($request ,[
-            'name' => 'required',
-            'email' => 'required',
-            'comment' => 'required'
+            'title' => 'required',
+            'description' => 'required',
+            'deadline' => 'required'
         ]);
+        
+        $challenge->title = $request->title;
+        $challenge->description = $request->description;
+        $challenge->deadline = $request->deadline;
+        $challenge->idO = Auth::user()->id;
+        $challenge->save();
 
-        // Create a comment
-        $comment = new Comment();
-
-        $comment->nameNonGuest = $request->input('name');
-        $comment->emailNonGuest = $request->input('email');
-        $comment->comment = $request->input('comment');
-        $comment->idChallenge = $challenge->idChallenge;
-        // $challenge = Challenge::find(1);
-        // $comment->challenge()->attach($challenge);
-
-        // Save a comment
-        $comment->save();
-
-        return redirect('/challenges')->with('success', 'Comment added succefully!');
+        return redirect('/organizerchallenges')->with('success', 'Challenge added succefully!');
     }
 
-    public function saveUser(Request $request) {
-        return 'saved';
-    }
-    public function loginUser(Request $request) {
-        return 'login success';
-    }
 }

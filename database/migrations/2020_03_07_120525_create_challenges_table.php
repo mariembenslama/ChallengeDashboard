@@ -14,17 +14,17 @@ class CreateChallengesTable extends Migration
     public function up()
     {
         Schema::create('challenges', function (Blueprint $table) {
-            $table->increments('idChallenge');
+            $table->increments('id');
 
-            $table->string('titleChallenge');
-            $table->string('descriptionChallenge');
-            $table->date('deadlineChallenge');       
-            $table->boolean('statusChallenge');  
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
-            $table->timestamp('deleted_at');
-            $table->integer('idOrganizer');
-            $table->foreign('idOrganizer')->references('idOrganizer')->on('organizers');
+            $table->string('title');
+            $table->string('description');
+            $table->date('deadline');       
+            $table->boolean('status')->nullable();  
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
+            $table->integer('idO');
+            // $table->foreign('idO')->references('id')->on('organizers');
         });
     }
 

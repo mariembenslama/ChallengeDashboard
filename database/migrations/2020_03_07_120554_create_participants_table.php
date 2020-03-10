@@ -14,17 +14,17 @@ class CreateParticipantsTable extends Migration
     public function up()
     {
         Schema::create('participants', function (Blueprint $table) {
-            $table->integer('idGuest');
-            $table->integer('idChallenge');
-            $table->primary(['idGuest', 'idChallenge']);
+            $table->integer('idC');
+            $table->integer('idG');
+            $table->primary(['idC', 'idG']);
 
             $table->boolean('codeSubmitted');
             $table->timestamp('submittedAt');
             $table->text('codeParticipant');
             $table->boolean('winner');
 
-            $table->foreign('idGuest')->references('idGuest')->on('guests');
-            $table->foreign('idChallenge')->references('idChallenge')->on('challenges');
+            $table->foreign('idG')->references('id')->on('guests');
+            $table->foreign('idC')->references('id')->on('challenges');
         });
     }
 

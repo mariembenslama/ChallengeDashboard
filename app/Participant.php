@@ -7,9 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Participant extends Model
 {
     protected $table = 'participants';
-    public $primaryKey = ['idChallenge', 'idGuest'];
-    public $foreignKey = ['idChallenge', 'idGuest'];
+    public $primaryKey = 'id';
+    public $foreignKey = ['idG', 'idC'];
     public $boolean = ['codeSubmitted', 'winner'];
     public $text = 'codeParticipant';
     public $timestamp = 'submittedAt';
+
+    public function challenges() {
+        return $this->hasMany('App\Challenge');
+    }
+    public function guests() {
+        return $this->hasMany('App\guest');
+    }
+
 }

@@ -21,41 +21,19 @@ Route::get('/about', function () {
     return view('pages.General.about');
 });
 
-Route::resource('/register', 'RegisterController');
-
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::resource('/register', 'Auth\RegisterController');
+Route::resource('/login', 'Auth\LoginController');
 
 Route::resource('/challenges', 'ChallengeController');
 Route::get('/listguests', 'AdminController@fetchGuests');
-Route::get('/listguests/{idGuest}', 'AdminController@showGuest');
+Route::get('/listguests/{id}', 'AdminController@showGuest');
 Route::get('/listorganizers', 'AdminController@fetchOrganizers');
-Route::get('/listorganizers/{idOrganizer}', 'AdminController@showOrganizer');
-Route::resource('/mychallenges', 'GuestController');
+Route::get('/listorganizers/{id}', 'AdminController@showOrganizer');
+// Route::resource('/mychallenges', 'GuestController');
 Route::resource('/organizerchallenges', 'OrganizerController');
-Route::get('{idChallenge}/edit', 'OrganizerController@edit');
-Route::get('/createchallenge', 'OrganizerController@store');
-
-
- 
-Route::get('/challenges/search', function () {
-    return "this is challenge search page";
+Route::get('/createchallenge', function(){
+    return view('pages.Organizer.createChallenge');
 });
-
-
+Route::get('{id}/edit', 'OrganizerController@edit');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

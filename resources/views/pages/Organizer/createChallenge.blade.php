@@ -3,7 +3,7 @@
 @extends('.layouts.inc.messages')
 
     <h1>Create a challenge</h1>
-    {!! Form::open(['action' => 'OrganizerController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['action' => 'ChallengeController@store', 'method' => 'POST']) !!}
     <div class="form-group">
         {{Form::label('Challenge title', 'Challenge title')}}
         {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => "Write the challenge title here..."])}}

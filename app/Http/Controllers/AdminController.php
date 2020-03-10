@@ -19,14 +19,14 @@ class AdminController extends OrganizerController
         return view('pages.Admin.listOrganizers')->with('organizers', $organizers);
     }
 
-    public function showGuest($idGuest) {
-        $guest = Guest::find($idGuest);
+    public function showGuest($id) {
+        $guest = Guest::find($id);
         return view('pages.Admin.guestDetails')->with('guest', $guest);
     }
 
-    public function showOrganizer($idOrganizer) {
-        $organizer = Organizer::find($idOrganizer);
-        $organizerChallenges = Challenge::where('idOrganizer', $idOrganizer)
+    public function showOrganizer($id) {
+        $organizer = Organizer::find($id);
+        $organizerChallenges = Challenge::where('id', $id)
                             ->orderBy('created_at', 'desc')
                             ->paginate(10);
         return view('pages.Admin.organizerDetails', compact('organizer', 'organizerChallenges')); 

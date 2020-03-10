@@ -14,14 +14,14 @@ class CreateOrganizersTable extends Migration
     public function up()
     {
         Schema::create('organizers', function (Blueprint $table) {
-            $table->increments('idOrganizer');
+            $table->increments('id');
             
-            $table->string('nameOrganizer');
-            $table->string('emailOrganizer')->unique();
-            $table->string('passwordOrganizer');    
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
-            $table->timestamp('deleted_at');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');    
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
 
         });
     }

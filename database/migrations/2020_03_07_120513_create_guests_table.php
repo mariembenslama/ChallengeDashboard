@@ -14,14 +14,15 @@ class CreateGuestsTable extends Migration
     public function up()
     {
         Schema::create('guests', function (Blueprint $table) {
-            $table->increments('idGuest');
+            $table->increments('id');
 
-            $table->string('nameGuest');
-            $table->string('emailGuest')->unique();
-            $table->string('passwordGuest');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
-            $table->timestamp('deleted_at'); 
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('remember_token')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable(); 
         });
     }
 

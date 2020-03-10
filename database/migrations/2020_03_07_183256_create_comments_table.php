@@ -14,18 +14,18 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->increments('idComment');
+            $table->increments('id');
 
-            $table->string('nameNonGuest');
-            $table->string('emailNonGuest')->unique();
+            $table->string('name');
+            $table->string('email')->unique();
             $table->string('comment');
 
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
 
-            $table->integer('idChallenge');
-            $table->foreign('idChallenge')
-                  ->references('idChallenge')
+            $table->integer('idC');
+            $table->foreign('idC')
+                  ->references('id')
                   ->on('challenges')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');

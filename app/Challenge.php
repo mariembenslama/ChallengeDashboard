@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Challenge extends Model
 {
     protected $table = 'challenges';
-    public $primaryKey ="idChallenge";
-    public $string = ['titleChallenge', 'descriptionChallenge'];
-    public $date = 'deadlineChallenge';
-    public $boolean = 'statusChallenge';
+    public $primaryKey ="id";
+    public $string = ['title', 'description'];
+    public $date = 'deadline';
+    public $boolean = 'status';
     public $timestamp = ['created_at', 'updated_at', 'deleted_at'];
+    public $integer = 'idO';
 }

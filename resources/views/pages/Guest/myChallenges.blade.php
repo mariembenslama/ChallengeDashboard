@@ -1,4 +1,5 @@
 @extends('.layouts.app')
+
 @section('content')
 
     @if(count($guestChallenges) > 0)
@@ -7,14 +8,14 @@
                 <li class="list-group-item">
                     {{-- Get All My challenges --}}
                     <p>My challenges</p>
-                    {{-- <span> Challenge: 
-                        <a href="/challenges/{{$challenge->idChallenge}}">
-                        {{$challenge->titleChallenge}}
+                    <span> Challenge: 
+                        <a href="/challenges/{{$challenge->idC}}">
+                        {{$challenge->title}}
                         </a>
                     </span><br>
                     <span>My code           : {{$challenge->codeParticipant}}</span><br>
                     <span>Date of submission: {{$challenge->submittedAt}}</span><br>
-                    <span>Organizer: {{$challenge->idOrganizer}}</span><br> --}}
+                    <span>Organizer: {{$challenge->id}}</span><br>
                 </li><br>
             @endforeach
             {{$guestChallenges->links()}}

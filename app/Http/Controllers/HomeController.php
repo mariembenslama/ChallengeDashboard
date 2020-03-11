@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+            $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $id = Auth::user()->id;
+        $sql = "select u.role from users u where id=$id";
+        $role = DB::select($sql);
+        $sql = "select c.id, c.title, c.deadline, c.status, 
+        u.name  
+        from challenges c, users u 
+        where c.status = TRUE and c.organizer_id = u.id order by c.created_at desc";
+        $ongoing = DB::select($sql);
+        return view('home', compact('role', 'ongoing'));
     }
 }

@@ -24,4 +24,7 @@
     @else 
         <p>No Challenges Found!</p>
     @endif
+    @if($challenge->role == 'Admin' || $challenge->role == 'Organizer')
+        <a class="btn btn-primary btn-lg" href="challenges/create">Create a challenge</a>
+    @endif
 @endsection

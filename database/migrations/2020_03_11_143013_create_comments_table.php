@@ -15,21 +15,11 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->string('name');
-            $table->string('email')->unique();
             $table->string('comment');
-
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-
             $table->integer('challenge_id');
-            $table->foreign('challenge_id')
-                  ->references('id')
-                  ->on('challenges')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-                });
+        });
     }
 
     /**

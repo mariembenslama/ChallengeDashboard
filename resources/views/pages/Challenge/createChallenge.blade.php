@@ -16,7 +16,10 @@
         {{Form::label('Deadline', 'Deadline')}}
         {{Form::date('deadline', '', ['class' => 'date form-control'])}}
     </div>
-
+    <div class="form-group">
+        {{Form::label('Status', 'Status')}}
+        {{Form::select('status', array('Ongoing', 'Closed'), null, ['class' => 'option form-control'])}}
+    </div>
         {{Form::submit('Create challenge', ['class' => 'btn btn-primary btn-lg'])}}
     {!! Form::close() !!}
 @endsection

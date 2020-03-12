@@ -15,19 +15,19 @@
 <li>ADDED: - Any user can comment challenges. [Done]</li>
 <li>- As an organizer, create sample challenge(s). [Done]</li>
 <li>ADDED: - A participant can check out the challenges they participated in. [Done]</li>
+<li>- As a guest I need to wait for my status to be changed to access any information. [Done]</li>
+<li>- As an admin I have a full ability of all auths. [Done]</li>
+<li>- As an admin I can change user’s auth. [Done]</li>
+<li>- As a participant I can submit my code (text), only once [Done].</li>
+<li>- As a participant I can submit again [Done].</li>
+<li>- As a participant I cannot submit my code after deadline [Done].</li>
+<li>- As a participant I cannot submit my code for closed challenge [Done].</li>
+<li>- As a system I save all codes that participants submit [Done].</li>
+<li>- As an organizer I can decide winner(s) [Done].</li>
+<li>- As an organizer I can change status of challenge [Done].</li>
 </ul>
 <h2>To do:</h2>
 <ul>
-<li>- As a guest I need to wait for my status to be changed to access any information. [To do]</li>
-<li>- As an admin I have a full ability of all auths. [To do]</li>
-<li>- As an admin I can change user’s auth. [To do]</li>
 <li>- As a participant I can filter challenges by keyword, status (ongoing, closed) and period. [To do]</li>
-<li>- As a participant I can submit my code (text), only once [To do].</li>
-<li>- As a participant I can submit again [To do].</li>
-<li>- As a participant I cannot submit my code after deadline [To do].</li>
-<li>- As a participant I cannot submit my code for closed challenge [To do].</li>
-<li>- As a system I save all codes that participants submit [To do].</li>
-<li>- As an organizer I can decide winner(s) [To do].</li>
-<li>- As an organizer I can change status of challenge [To do].</li>
 <li>- As a participant I can see winner’s code [To do].</li>
 </ul>

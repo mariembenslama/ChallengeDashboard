@@ -1,9 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
             @foreach($role as $r)
                 @if($r->role != 'Participant')
                     <div class="card">
@@ -31,12 +27,17 @@
                                         </a>
                                     </span><br>
                                     <span>Deadline: {{$challenge->deadline}}</span><br>
-                                    @if($challenge->status == '1')
+                                    @if($challenge->status == TRUE)
                                         <span>Status: Ongoing</span><br>
                                     @else
                                         <span>Status: Closed</span><br>
                                     @endif
                                     <span>Organizer: {{$challenge->name}}</span><br>
+                                    @if($challenge->status == TRUE || $current_date < $challenge->deadline)
+                                        <a class="btn btn-success btn-lg" href="{{$challenge->id}}/submit">Submit</a>
+                                    @else 
+                                        <button [disabled]="true" class="btn btn-success btn-lg">Submit</button>
+                                    @endif
                                 </li><br>
                             @endforeach
                         </ul>
@@ -45,7 +46,4 @@
                     @endif
                 @endif
             @endforeach
-        </div>
-    </div>
-</div>
 @endsection

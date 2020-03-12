@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         {{Form::label('Status', 'Status')}}
-        {{Form::select('status', array('Ongoing', 'Closed'), null, ['class' => 'option form-control'])}}
+        {{Form::select('status', array(true => 'Ongoing', false => 'Closed'), null, ['class' => 'option form-control'])}}
     </div>
         {{Form::submit('Create challenge', ['class' => 'btn btn-primary btn-lg'])}}
     {!! Form::close() !!}

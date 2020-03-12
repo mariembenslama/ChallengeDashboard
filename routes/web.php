@@ -22,6 +22,11 @@ Route::get('challenges/create', function(){
 });
 Route::get('{id}/edit', 'ChallengeController@edit');
 Route::post('/create','CommentController@store');
+Route::resource('challenges/{id}/submit', 'ParticipantController');
+Route::get('challenges/{id}/codes', 'ParticipantController@show');
+Route::patch('challenges/{id}/codes/decide', 'ParticipantController@update');
+Route::resource('/authority', 'AdminController');
+
 
 Route::get('/listguests', 'AdminController@fetchGuests');
 Route::get('/listguests/{id}', 'AdminController@showGuest');

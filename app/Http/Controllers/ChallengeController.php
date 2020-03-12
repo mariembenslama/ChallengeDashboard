@@ -6,26 +6,34 @@ use Illuminate\Http\Request;
 use App\Challenge;
 use App\User;
 use Auth;
+use \Illuminate\Pagination\Paginator;
 use DB;
 class ChallengeController extends Controller
 {
     public function index() {
+        $id_user = Auth::user()->id;
         $sql = "select c.id, c.title, c.deadline, c.status, 
-                u.name, u.role 
+                u.name  
                 from challenges c, users u 
                 where c.organizer_id = u.id order by c.created_at desc";
         $challenges = DB::select($sql);
-        return view('pages.Challenge.challenges', compact('challenges'));
+        $sql = "select u.role from users u where id =$id_user";
+        $user = DB::select($sql);
+        return view('pages.Challenge.challenges', compact('challenges', 'user'));
     }
 
     public function show($id) {
-        $sql = "select c.id as idc, c.title, c.description, c.deadline, c.status, c.created_at, c.updated_at, u.name, u.id, u.role
+        $id_user = Auth::user()->id;
+        $sql = "select c.id as idc, c.title, c.description, c.deadline, c.organizer_id, c.status, c.created_at, c.updated_at, 
+                u.name, u.id, u.role
                 from challenges c, users u 
-                where c.organizer_id = u.id order by c.created_at desc limit 1";
+                where c.organizer_id = u.id and c.id = $id order by c.created_at desc limit 1";
         $challenges = DB::select($sql);
         $sql = "select comment from comments where challenge_id = $id";
         $comments = DB::select($sql);
-        return view('pages.Challenge.challengeDetails', compact('challenges', 'comments'));
+        $sql = "select p.user_id from participants p where p.user_id=$id_user and p.challenge_id = $id";
+        $submit = DB::select($sql);
+        return view('pages.Challenge.challengeDetails', compact('challenges', 'comments','submit'));
     }
 
     public function store(Request $request){
@@ -40,6 +48,7 @@ class ChallengeController extends Controller
         $challenge->title = $request->title;
         $challenge->description = $request->description;
         $challenge->deadline = $request->deadline;
+        $challenge->status = $request->status;
         $challenge->organizer_id = Auth::user()->id;
         $challenge->save();
 

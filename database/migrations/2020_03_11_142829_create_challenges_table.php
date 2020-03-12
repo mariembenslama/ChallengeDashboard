@@ -20,7 +20,7 @@ class CreateChallengesTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->date('deadline');   
-            $table->boolean('status')->nullable();  
+            $table->boolean('status');  
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

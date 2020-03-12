@@ -15,10 +15,11 @@ class CreateParticipantsTable extends Migration
     {
         Schema::create('participants', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('guest_id');
+            $table->integer('user_id');
             $table->integer('challenge_id');
             $table->string('code');
             $table->boolean('submitted');
+            $table->boolean('winner')->default(false);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

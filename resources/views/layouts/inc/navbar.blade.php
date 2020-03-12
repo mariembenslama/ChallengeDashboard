@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li><a  class="navbar-brand" href="/challenges">Challenges</a></li>
-                @if(Auth::user()->role == 'Admin')
+                @if(Auth::check() && Auth::user()->role == 'Admin')
                     <li><a  class="navbar-brand" href="/authority">Authority</a></li>
                 @endif
             </ul>

@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password'); 
             $table->string('remember_token')->nullable();;
-            $table->string('role')->default('guest');;
+            $table->string('role')->default('Guest');;
             $table->boolean('status')->default(false);;
             $table->integer('auth')->default(0);
             $table->integer('participant_id')->nullable();

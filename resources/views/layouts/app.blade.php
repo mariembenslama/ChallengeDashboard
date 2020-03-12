@@ -22,19 +22,15 @@
 <body>
     <div id="app">
         @include('layouts.inc.navbar')
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+     
                 <main class="py-4">
                     <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-8">
+                  
                                  @yield('content')
-                            </div>
-                        </div>
+
                     </div>
                 </main>
-            </div>
-        </div>
+
     </div>
 </body>
 </html>

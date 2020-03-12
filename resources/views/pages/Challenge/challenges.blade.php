@@ -1,30 +1,34 @@
 @extends('layouts.app')
 @section('content')
             <h1>Challenges page</h1>
-            @if(count($challenges) > 0)
-                <ul class="list-group">
+                @if(count($challenges) > 0)
                     @foreach ($challenges as $challenge)
-                        <li class="list-group-item">
-                            <span> Challenge: 
-                                <a href="/challenges/{{$challenge->id}}">
-                                {{$challenge->title}}
-                                </a>
-                            </span><br>
-                            <span>Deadline: {{$challenge->deadline}}</span><br>
-                            <span>Organizer: {{$challenge->name}}</span><br>
-                            @if($challenge->status == TRUE)
-                                <span>Status: Ongoing</span><br>
-                            @else
-                                <span>Status: Closed</span><br>
-                            @endif
-                        </li><br>
-                    
+                    <div class="card" style="width: 100%;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                    <a href="/challenges/{{$challenge->id}}">
+                                    {{$challenge->title}}
+                                    </a>
+                            </li>
+                            <li class="list-group-item">Deadline: {{$challenge->deadline}}</li>
+                                <li class="list-group-item">Organizer: {{$challenge->name}}</li>
+                                @if($challenge->status == TRUE)
+                                    <li class="list-group-item">Status: Ongoing</li>
+                                @else
+                                    <li class="list-group-item">Status: Closed</li>
+                                @endif      
+                        </ul>    
+                    </div>          
+                    <br>    
                     @endforeach
-                    {{-- {{$challenges->links()}} --}}
-                </ul>
-            @else 
-                <p>No Challenges Found!</p>
-            @endif
+                    <br>
+
+                        {{-- {{$challenges->links()}} --}}
+                @else 
+                    <p>No Challenges Found!</p>
+                @endif
+   
+            <br>
             @foreach($user as $u)
                 @if($u->role == 'Admin' || $u->role == 'Organizer')
                     <a class="btn btn-primary btn-lg" href="challenges/create">Create a challenge</a>

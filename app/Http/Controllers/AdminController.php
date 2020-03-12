@@ -35,7 +35,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->role = $request->input('role');
         $user->save();
-        return redirect('/authority')->with('success', 'Role updated');
+        return redirect('/challenges')->with('success', 'Role updated');
     
     }
 }

@@ -18,29 +18,26 @@
                 @else 
                     <h1>Ongoing challenges</h1>
                     @if(count($ongoing) > 0)
-                        <ul class="list-group">
                             @foreach ($ongoing as $challenge)
+                            <div class="card" style="width: 100%;">
+                            <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <span> Challenge: 
+                                     Challenge: 
                                         <a href="/challenges/{{$challenge->id}}">
                                         {{$challenge->title}}
                                         </a>
-                                    </span><br>
-                                    <span>Deadline: {{$challenge->deadline}}</span><br>
+                                </li>
+                                    <li class="list-group-item">Deadline: {{$challenge->deadline}}</li>
                                     @if($challenge->status == TRUE)
-                                        <span>Status: Ongoing</span><br>
+                                        <li class="list-group-item">Status: Ongoing</li>
                                     @else
-                                        <span>Status: Closed</span><br>
+                                        <li class="list-group-item">Status: Closed</li>
                                     @endif
-                                    <span>Organizer: {{$challenge->name}}</span><br>
-                                    @if($challenge->status == TRUE || $current_date < $challenge->deadline)
-                                        <a class="btn btn-success btn-lg" href="{{$challenge->id}}/submit">Submit</a>
-                                    @else 
-                                        <button [disabled]="true" class="btn btn-success btn-lg">Submit</button>
-                                    @endif
-                                </li><br>
+                                    <li class="list-group-item">Organizer: {{$challenge->name}}</li>
+                            </ul>
+                            </div>
+                            <br><br>
                             @endforeach
-                        </ul>
                     @else 
                         <span>There are no ongoing challenges.</p>
                     @endif

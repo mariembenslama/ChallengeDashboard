@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts.inc.messages')
 <h1>{{$challenge->title}}</h1>
-@if(Auth::user()->role == 'Organizer' || Auth::user()->role=='Admin')
+@if(Auth::user()->role == 'Organizer' || Auth::user()->role == 'Admin')
     @if(count($codes) > 0)
         <h2>Participants:</h2>
         @foreach($codes as $code)
@@ -24,15 +24,13 @@
     @endif
 @endif
 @if(Auth::user()->role == 'Participant')
-    @if(count($codes) > 0)
-        @foreach($codes as $code)
-            @if($code->winner == true)
+    @if(count($winners) > 0)
+        @foreach($winners as $code)
                 <span>Winner of this challenge's code:</span><br>
                 <p>{{$code->code}}</p><br>
-            @else 
-                <span>The winner of this challenge isn't yet decided.</span>
-            @endif
         @endforeach
+    @else
+        <span>The winner of this challenge isn't yet decided.</span>
     @endif
 @endif
 @endsection

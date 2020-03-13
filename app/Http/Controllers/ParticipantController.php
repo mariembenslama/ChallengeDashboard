@@ -36,7 +36,8 @@ class ParticipantController extends Controller
                             ->orderBy('created_at', 'desc')
                             ->paginate(10);
         $challenge = Challenge::find($id);
-        return view('pages.Participant.checkCodes', compact('codes', 'challenge'));
+        $winners = $codes->where('winner', '=', true);
+        return view('pages.Participant.checkCodes', compact('codes', 'challenge', 'winners'));
     }
 
     public function update(Request $request, $id) {

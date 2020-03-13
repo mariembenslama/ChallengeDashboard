@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 class CreateUsersTable extends Migration
 {
     /**
@@ -25,6 +24,14 @@ class CreateUsersTable extends Migration
             $table->timestamp('deleted_at')->nullable();
         
         });
+        DB::table('users')->insert(
+            array(
+                'name' => 'admin',
+                'email' => 'admin@domain.com',
+                'password' => '$2y$10$mrVUMQ3A0EgO52krioc7m.XXVfkVWjQRbF.F1ilZSrVWB7aKkhOXq',
+                'role' => 'Admin'
+            )
+        );
     }
 
     /**

@@ -1,3 +1,10 @@
+<h1> Notice:  </h1>
+<li> When you run: php artisan migrate:fresh, an account by default for the Admin will be inserted (database seeding) automatically.</li>
+<ul>
+<li> Email: admin@domain.com </li>
+<li> Password: azertyuiop </li
+</ul>
+
 <h1> Acheivements % Requirements:  </h1>
 <h2>Done Tasks:</h2>
 <ul>

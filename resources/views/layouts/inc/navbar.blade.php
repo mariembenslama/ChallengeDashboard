@@ -10,7 +10,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li><a  class="navbar-brand" href="/challenges">Challenges</a></li>
+                @if(Auth::check() && Auth::user()->role != 'Guest')
+                    <li><a  class="navbar-brand" href="/challenges">Challenges</a></li>
+                @endif
                 @if(Auth::check() && Auth::user()->role == 'Admin')
                     <li><a  class="navbar-brand" href="/authority">Authority</a></li>
                 @endif

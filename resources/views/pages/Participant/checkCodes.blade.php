@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.inc.messages')
-<h1>Challenge: {{$challenge->title}}</h1>
+<h1>{{$challenge->title}}</h1>
 @if(Auth::user()->role == 'Organizer' || Auth::user()->role=='Admin')
     @if(count($codes) > 0)
         <h2>Participants:</h2>

@@ -18,7 +18,7 @@
         <li class="list-group-item">Organizer: {{$challenge->user->name}}</li>
         </ul>
     </div>
-    @if($challenge->user->role == 'Admin' || ($challenge->user->role == 'Organizer' && $challenge->user_id == Auth::user()->id))
+    @if(Auth::user()->role == 'Admin' || ($challenge->user->role == 'Organizer' && $challenge->user_id == Auth::user()->id))
     <br>
         {!!Form::open(['action' => ['ChallengeController@destroy', $challenge->id], 'method' => 'POST'])!!}
         {{Form::hidden('_method', 'DELETE')}}

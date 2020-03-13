@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class ParticipantMiddleware
 {
@@ -15,6 +16,12 @@ class ParticipantMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Auth::check()) {
+            if(Auth::user()->role == 'Participant')
+            {
+                return $next($request);
+            }
+            abort(404);
+        }       
     }
 }

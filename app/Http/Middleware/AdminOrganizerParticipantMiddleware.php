@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class AdminOrganizerParticipantMiddleware
 {
     /**
@@ -21,5 +21,6 @@ class AdminOrganizerParticipantMiddleware
                 return $next($request);
             }
             abort(404);
-        }      }
+        }      
+    }
 }

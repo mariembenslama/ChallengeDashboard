@@ -172,7 +172,8 @@
           </div>
           <div style="float: right;">
           {{Form::hidden('_method', 'PUT')}}{{Form::submit('Edit', ['class' => 'btn btn-success btn-lg'])}}
-          </div>    {!! Form::close() !!}
+          </div>    
+          {!! Form::close() !!}
         </td>
         <td>
         {!!Form::open(['action' => ['AdminController@destroy', $guest->id], 'method' => 'POST'])!!}

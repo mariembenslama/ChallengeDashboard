@@ -22,7 +22,7 @@ class User extends Eloquent implements Authenticatable
     }
 
     public function challenges() {
-        return $this->belongsToMany(Challenge::class, 'participant');
+        return $this->belongsToMany(Challenge::class, 'participants');
     }
 
 }

@@ -22,6 +22,6 @@ class Challenge extends Eloquent
         return $this->hasMany(Comment::class,'challenge_id');
     }
     public function users() {
-        return $this->belongsToMany(User::class, 'participant');
+        return $this->belongsToMany(User::class, 'participants');
     }
 }

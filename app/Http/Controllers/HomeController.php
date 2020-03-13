@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
+use App\Challenge;
 use DB;
 class HomeController extends Controller
 {
@@ -25,13 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $sql = "select u.role from users u where id=$id";
-        $role = DB::select($sql);
-        $sql = "select c.id, c.title, c.deadline, c.status, 
-        u.name  
-        from challenges c, users u 
-        where c.status = TRUE and c.organizer_id = u.id order by c.created_at desc";
-        $ongoing = DB::select($sql);
-        return view('home', compact('role', 'ongoing'));
+        $user = User::find($id);
+        $ongoing = Challenge::where('status', true)
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(10);
+
+        return view('home', compact('user', 'ongoing'));
     }
 }

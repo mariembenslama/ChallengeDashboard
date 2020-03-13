@@ -9,7 +9,7 @@ use App\Participant;
 class AdminController extends Controller
 {
     public function index() {
-        $sql = "select * from users u where u.role = 'guest'";
+        $sql = "select * from users u where u.role = 'Guest'";
         $guests = DB::select($sql);
         $sql = "select * from users u where u.role = 'Admin'";
         $admins = DB::select($sql);

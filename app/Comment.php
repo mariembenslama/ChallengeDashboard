@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -12,7 +11,7 @@ class Comment extends Model
     public $integer = 'challenge_id';
     public $timestamp = ['created_at', 'updated_at'];
 
-    public function challenge(){
-        return $this->belongsTo('Challenge');
-    }
+    public function challenge() {
+        return $this->belongsTo('App\Challenge', 'challenge_id');
+   }
 }

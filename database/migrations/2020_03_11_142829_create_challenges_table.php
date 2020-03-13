@@ -16,17 +16,14 @@ class CreateChallengesTable extends Migration
         Schema::create('challenges', function (Blueprint $table) {
             
             $table->increments('id');
-
             $table->string('title');
             $table->string('description');
             $table->date('deadline');   
             $table->boolean('status');  
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
-
-            $table->integer('organizer_id');
-            
+            $table->timestamp('deleted_at')->nullable(); 
+            $table->integer('user_id');
         });
     }
 

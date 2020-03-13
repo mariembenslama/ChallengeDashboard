@@ -1,6 +1,6 @@
-@extends('.layouts.app')
+@extends('layouts.app')
 @section('content')
-@extends('layouts.inc.messages')
+@include('layouts.inc.messages')
 <h1>Submit your code</h1>
     {!! Form::open(['action' => ['ParticipantController@store', $id], 'method' => 'POST']) !!}
     <div class="form-group">

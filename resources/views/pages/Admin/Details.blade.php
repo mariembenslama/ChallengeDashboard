@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
-@extends('layouts.inc.messages')
 @section('content')
+@include('layouts.inc.messages')
 <h2>List of admins</h2>
 @if(count($admins) > 0)
 <table class="table table-striped">
@@ -26,8 +26,13 @@
         <td>{{$admin->updated_at}}</td>
         <td>
         {!! Form::open(['action' => ['AdminController@update', $admin->id], 'method' => 'POST']) !!}
+        <div style="float: left;">
         {!!Form::select('role', array('Participant' => 'Participant', 'Guest' => 'Guest', 'Admin' => 'Admin', 'Organizer' => 'Organizer'), null, ['class' => 'option form-control'])!!}            
+        </div>
+        <div style="float: right;">
         {{Form::hidden('_method', 'PUT')}}{{Form::submit('Edit', ['class' => 'btn btn-success btn-lg'])}}
+        </div>
+        </div>
         {!! Form::close() !!}
         </td>
         <td>
@@ -69,9 +74,13 @@
         <td>{{$organizer->updated_at}}</td>
         <td>
         {!! Form::open(['action' => ['AdminController@update', $organizer->id], 'method' => 'POST']) !!}
-        {{Form::select('role', array('Participant' => 'Participant', 'Guest' => 'Guest', 'Admin' => 'Admin', 'Organizer' => 'Organizer'), null, ['class' => 'option form-control'])}}            
-        {{Form::hidden('_method', 'PUT')}}{{Form::submit('Edit', ['class' => 'btn btn-success btn-lg'])}}
-        {!! Form::close() !!}
+        <div style="float: left;">
+          {!!Form::select('role', array('Participant' => 'Participant', 'Guest' => 'Guest', 'Admin' => 'Admin', 'Organizer' => 'Organizer'), null, ['class' => 'option form-control'])!!}            
+          </div>
+          <div style="float: right;">
+          {{Form::hidden('_method', 'PUT')}}{{Form::submit('Edit', ['class' => 'btn btn-success btn-lg'])}}
+          </div>
+          {!! Form::close() !!}
         </td>
         <td>
         {!!Form::open(['action' => ['AdminController@destroy', $organizer->id], 'method' => 'POST'])!!}
@@ -112,9 +121,12 @@
         <td>{{$participant->updated_at}}</td>
         <td>
         {!! Form::open(['action' => ['AdminController@update', $participant->id], 'method' => 'POST']) !!}
-        {{Form::select('role', array('Participant' => 'Participant', 'Guest' => 'Guest', 'Admin' => 'Admin', 'Organizer' => 'Organizer'), null, ['class' => 'option form-control'])}}            
-        {{Form::hidden('_method', 'PUT')}}{{Form::submit('Edit', ['class' => 'btn btn-success btn-lg'])}}
-        {!! Form::close() !!}
+        <div style="float: left;">
+          {!!Form::select('role', array('Participant' => 'Participant', 'Guest' => 'Guest', 'Admin' => 'Admin', 'Organizer' => 'Organizer'), null, ['class' => 'option form-control'])!!}            
+          </div>
+          <div style="float: right;">
+          {{Form::hidden('_method', 'PUT')}}{{Form::submit('Edit', ['class' => 'btn btn-success btn-lg'])}}
+          </div>{!! Form::close() !!}
         </td>
         <td>
         {!!Form::open(['action' => ['AdminController@destroy', $participant->id], 'method' => 'POST'])!!}
@@ -155,9 +167,12 @@
         <td>{{$guest->updated_at}}</td>
         <td>
         {!! Form::open(['action' => ['AdminController@update', $guest->id], 'method' => 'POST']) !!}
-        {!!Form::select('role', array('Participant' => 'Participant', 'Guest' => 'Guest', 'Admin' => 'Admin', 'Organizer' => 'Organizer'), null, ['class' => 'option form-control'])!!}            
-        {{Form::hidden('_method', 'PUT')}}{{Form::submit('Edit', ['class' => 'btn btn-success btn-lg'])}}
-        {!! Form::close() !!}
+        <div style="float: left;">
+          {!!Form::select('role', array('Participant' => 'Participant', 'Guest' => 'Guest', 'Admin' => 'Admin', 'Organizer' => 'Organizer'), null, ['class' => 'option form-control'])!!}            
+          </div>
+          <div style="float: right;">
+          {{Form::hidden('_method', 'PUT')}}{{Form::submit('Edit', ['class' => 'btn btn-success btn-lg'])}}
+          </div>    {!! Form::close() !!}
         </td>
         <td>
         {!!Form::open(['action' => ['AdminController@destroy', $guest->id], 'method' => 'POST'])!!}

@@ -1,7 +1,6 @@
 @extends('.layouts.app')
 @section('content')
-@extends('.layouts.inc.messages')
-
+@include('layouts.inc.messages')
     <h1>Create a challenge</h1>
     {!! Form::open(['action' => 'ChallengeController@store', 'method' => 'POST']) !!}
     <div class="form-group">

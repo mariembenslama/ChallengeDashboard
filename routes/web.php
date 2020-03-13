@@ -26,15 +26,5 @@ Route::resource('challenges/{id}/submit', 'ParticipantController');
 Route::get('challenges/{id}/codes', 'ParticipantController@show');
 Route::patch('challenges/{id}/codes/decide', 'ParticipantController@update');
 Route::resource('/authority', 'AdminController');
-
-
-Route::get('/listguests', 'AdminController@fetchGuests');
-Route::get('/listguests/{id}', 'AdminController@showGuest');
-Route::get('/listorganizers', 'AdminController@fetchOrganizers');
-Route::get('/listorganizers/{id}', 'AdminController@showOrganizer');
-
-// Route::resource('/mychallenges', 'GuestController');
-Route::resource('/organizerchallenges', 'OrganizerController');
-Route::resource('/guestchallenges', 'GuestController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

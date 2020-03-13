@@ -23,6 +23,9 @@ class CreateParticipantsTable extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('challenge_id')->references('id')->on('challenges')->onDelete('cascade');
+            
         });
     }
 

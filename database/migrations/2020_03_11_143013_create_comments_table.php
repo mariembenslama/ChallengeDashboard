@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->string('comment');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-            $table->integer('challenge_id')->nullable();
+            $table->integer('challenge_id');
         });
     }
 

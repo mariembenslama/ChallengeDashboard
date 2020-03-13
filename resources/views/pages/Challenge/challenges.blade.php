@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('layouts.inc.messages')
             <h1>Challenges page</h1>
                 @if(count($challenges) > 0)
                     @foreach ($challenges as $challenge)
@@ -11,7 +12,7 @@
                                     </a>
                             </li>
                             <li class="list-group-item">Deadline: {{$challenge->deadline}}</li>
-                                <li class="list-group-item">Organizer: {{$challenge->name}}</li>
+                                <li class="list-group-item">Organizer: {{$challenge->user->name}}</li>
                                 @if($challenge->status == TRUE)
                                     <li class="list-group-item">Status: Ongoing</li>
                                 @else
@@ -21,6 +22,7 @@
                     </div>          
                     <br>    
                     @endforeach
+                    {{$challenges->links()}}
                     <br>
 
                         {{-- {{$challenges->links()}} --}}
@@ -29,11 +31,9 @@
                 @endif
    
             <br>
-            @foreach($user as $u)
-                @if($u->role == 'Admin' || $u->role == 'Organizer')
-                    <a class="btn btn-primary btn-lg" href="challenges/create">Create a challenge</a>
-                @endif
-            @endforeach
+            @if($user->role == 'Admin' || $user->role == 'Organizer')
+                <a class="btn btn-primary btn-lg" href="challenges/create">Create a challenge</a>
+            @endif
 
             <style>
                 button:disabled,

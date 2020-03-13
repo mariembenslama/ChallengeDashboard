@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Challenge extends Model
+use Eloquent;
+use Comment;
+use App\User;
+class Challenge extends Eloquent
 {
     protected $table = 'challenges';
     public $primaryKey ='id';
@@ -13,13 +15,13 @@ class Challenge extends Model
     public $boolean = 'status'; // Ongoing, Closed
     public $timestamp = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function participant() {
-        return $this->belongsTo('App\Participant');
-    }
     public function user() {
          return $this->belongsTo('App\User', 'user_id');
     }
     public function comment() {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(Comment::class,'challenge_id');
+    }
+    public function users() {
+        return $this->belongsToMany(User::class, 'participant');
     }
 }

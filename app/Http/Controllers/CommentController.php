@@ -11,10 +11,10 @@ class CommentController extends Controller
         $this->validate($request ,[
             'comment' => 'required',
         ]);
+        $challenge_id = $request->idc;
         $comment->challenge_id = $request->idc;
         $comment->comment = $request->comment;
         $comment->save();
-
-        return redirect('/challenges')->with('success', 'You comment was added succefully!');
+        return redirect('/challenges/'.$request->idc)->with('success', 'You comment was added succefully!');
     }
 }

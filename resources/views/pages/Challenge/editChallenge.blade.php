@@ -1,8 +1,7 @@
 @extends('.layouts.app')
 @section('content')
-@extends('.layouts.inc.messages')
+@include('layouts.inc.messages')
     <h1>Edit challenge</h1>
-    @foreach($challenges as $challenge)
     {!! Form::open(['action' => ['ChallengeController@update', $challenge->id], 'method' => 'POST']) !!}
     <div class="form-group">
         {{Form::label('Challenge title', 'Challenge title')}}
@@ -23,5 +22,4 @@
         {{Form::hidden('_method', 'PUT')}}
         {{Form::submit('Edit challenge', ['class' => 'btn btn-success btn-lg'])}}
     {!! Form::close() !!}
-    @endforeach
 @endsection

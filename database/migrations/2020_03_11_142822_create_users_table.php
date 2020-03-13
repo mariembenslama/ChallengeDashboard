@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('password'); 
             $table->string('remember_token')->nullable();;
             $table->string('role')->default('Guest');;
-            $table->boolean('status')->default(false);;
-            $table->integer('auth')->default(0);
             $table->integer('participant_id')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

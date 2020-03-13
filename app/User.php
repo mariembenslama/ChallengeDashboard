@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Eloquent;
+use App\Challenge;
 class User extends Eloquent implements Authenticatable
 {
     use AuthenticableTrait;
@@ -13,15 +14,15 @@ class User extends Eloquent implements Authenticatable
     public $primaryKey = 'id';
     public $string = ['name', 'email', 'password', 'remember_token', 'role'];
     public $fillable = ['name', 'email', 'password'];
-    public $boolean = 'status';
-    public $integer = 'auth';
+    public $hidden = ['remember_token', 'password'];
     public $timestamp = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function participant() {
-        return $this->belongsTo('App\Participant');
+    public function challenge() {
+        return $this->hasMany(Challenge::class,'user_id');
     }
 
-    public function challenge() {
-        return $this->hasMany('App\Challenge');
+    public function challenges() {
+        return $this->belongsToMany(Challenge::class, 'participant');
     }
+
 }

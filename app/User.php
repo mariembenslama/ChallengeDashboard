@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Eloquent;
+use Comment;
 use App\Challenge;
 class User extends Eloquent implements Authenticatable
 {
@@ -25,4 +26,7 @@ class User extends Eloquent implements Authenticatable
         return $this->belongsToMany(Challenge::class, 'participants');
     }
 
+    public function comments() {
+        return $this->hasMany(Comment::class, 'user_id');
+    }
 }

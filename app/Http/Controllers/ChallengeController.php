@@ -72,6 +72,27 @@ class ChallengeController extends Controller
         $challenge->save();
         return redirect('/challenges')->with('success', 'Challenge updated');
     }
+    public function search(Request $request) {
+
+        $challenges = Challenge::all();
+        $id_user = Auth::user()->id;
+        $user = User::find($id_user);
+
+        if ($request->has('keyword')) {
+            $challenges = $challenges->where('title' ,$request->keyword);
+        }
+
+        if ($request->has('status')) {
+            $challenges = $challenges->where('status', $request->status);
+        }
+
+        if ($request->has('period')) {
+            $challenges->where('deadline', $request->period);
+        }
+
+        return view('pages.Challenge.challenges', compact('challenges', 'user'));
+
+    }
 
     public function destroy($id) {
         $challenge = Challenge::find($id);

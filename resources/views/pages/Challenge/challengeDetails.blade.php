@@ -41,25 +41,25 @@
         @endif
     <br>
         <br>
-        <h3> Comments section: </h3>
+        <h4>Comments section </h4>
             @if(count($comments) > 0)
-                <ul>
                 @foreach($comments as $comment)
-                    <li class="list-group-item">- {!!$comment->comment!!}</li>
+                    <ul>
+                        <li class="list-group-item">Name   : {!!$comment->user->name!!}</li>
+                        <li class="list-group-item">Comment: {!!$comment->comment!!}</li>
+                    </ul>
                 @endforeach
                 {{$comments->links()}}
-                </ul>
             @else 
                 <span> No comments. </span>
-            @endif
-        <br>
-        
+            @endif  
         {!! Form::open(['action' => ['CommentController@store'], 'method' => 'POST']) !!}
             <div class="form-group">
                 <div style="visibility:hidden">
                     {{Form::text('idc', $challenge->id)}}
+                    {{Form::text('id_user', Auth::user()->id)}}
                 </div>
-                {{Form::label('Your comment', 'Comment')}}
+                <h4>Comment</h4>
                 {{Form::textarea('comment', '', ['id' => 'textarea', 'class' => 'form-control', 'placeholder' => "Write your comment..."])}}
             </div>
                 {{Form::submit('Add comment', ['class' => 'btn btn-success btn-lg'])}}

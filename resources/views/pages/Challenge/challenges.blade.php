@@ -2,6 +2,23 @@
 @section('content')
 @include('layouts.inc.messages')
             <h1>Challenges page</h1>
+            {!! Form::open(['action' => 'ChallengeController@search', 'as' => 'search'] ) !!}
+            <div class="form-group">
+                {{Form::label('Keyword', 'Keyword')}}
+                {{Form::text('keyword', '', ['class' => 'form-control', 'placeholder' => "Search by keyword..."])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('Status', 'Status')}}
+                {{Form::select('status', array(true => 'Ongoing', false => 'Closed', null => ''), null, ['class' => 'option form-control'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('Period', 'Period')}}
+                {{Form::date('period', '', ['class' => 'date form-control'])}}
+            </div>
+                {{Form::submit('Search challenge', ['class' => 'btn btn-primary btn-lg'])}}
+            {!! Form::close() !!}
+            <br>
+
                 @if(count($challenges) > 0)
                     @foreach ($challenges as $challenge)
                     <div class="card" style="width: 100%;">
@@ -22,7 +39,7 @@
                     </div>          
                     <br>    
                     @endforeach
-                    {{$challenges->links()}}
+                    {{-- {{$challenges->links()}} --}}
                     <br>
 
                         {{-- {{$challenges->links()}} --}}

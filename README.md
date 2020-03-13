@@ -23,9 +23,9 @@
 <li>- As a system I save all codes that participants submit [Done].</li>
 <li>- As an organizer I can decide winner(s) [Done].</li>
 <li>- As an organizer I can change status of challenge [Done].</li>
+<li>- As a participant I can see winner’s code [Done].</li>
 </ul>
 <h2>To do:</h2>
 <ul>
 <li>- As a participant I can filter challenges by keyword, status (ongoing, closed) and period. [To do]</li>
-<li>- As a participant I can see winner’s code [To do].</li>
 </ul>
